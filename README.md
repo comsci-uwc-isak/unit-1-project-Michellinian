@@ -14,7 +14,7 @@ Contents
 
 Planning
 ----------
-** Defining the Problem (Topic 1.1.1) 
+**Defining the Problem (Topic 1.1.1)**
 100-150 words explanation of the context of the problem 
 
 Design
