@@ -23,6 +23,7 @@ Design
 ---------
 ### First sketch of the system 
 [SystemDiagram](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1#G1KBj12ggXIOlJj7rTtTJUD-R3fKnx1MDV)
+
 **Fig. 1** First sketch of the system showing the main input/output components, actions, and software requirements.
 
 Development
@@ -30,6 +31,35 @@ Development
 ### 1. Script to install the app 
 The following script creates the app folder and inside it creates two more folders: db and scripts.
 ```sh 
+#!/bin/bash
+
+#This file creates the folder structure for the minimal Car Rental App
+
+echo "Starting the installation"
+echo "Enter the path where you want to install. Press Enter"
+
+read path
+
+#Moving to the desired location
+cd $path
+echo "moving to $path"
+echo $pwd
+#Check for correct change directory
+if [ "$path" != "$pwd" ]; then
+        echo "Error creating the folder structure"
+        exit
+fi
+
+#Create App folder
+mkdir RentalCarApp
+
+#Create database/scripts folder inside the RentalCarApp
+cd RentalCarApp
+mkdir db
+mkdir scripts
+
+echo "structure created successfully"
+```
 
 
 Evaluation
