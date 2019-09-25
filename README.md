@@ -22,7 +22,7 @@ The new system that we are going to create for the client is a program for recor
 Design
 ---------
 ### First sketch of the system 
-![SystemDiagram](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1#G1KBj12ggXIOlJj7rTtTJUD-R3fKnx1MDV)
+[SystemDiagram](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1#G1KBj12ggXIOlJj7rTtTJUD-R3fKnx1MDV)
 **Fig. 1** First sketch of the system showing the main input/output components, actions, and software requirements.
 
 Development
