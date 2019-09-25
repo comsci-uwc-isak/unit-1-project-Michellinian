@@ -21,9 +21,16 @@ The new system that we are going to create for the client is a program for recor
 
 Design
 ---------
+### First sketch of the system 
+![SystemDiagram]()
+**Fig. 1** First sketch of the system showing the main input/output components, actions, and software requirements.
 
 Development
 --------
+### 1. Script to install the app 
+The following script creates the app folder and inside it creates two more folders: db and scripts.
+```sh 
+
 
 Evaluation
 -----------
