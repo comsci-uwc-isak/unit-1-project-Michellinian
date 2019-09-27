@@ -61,6 +61,58 @@ mkdir scripts
 echo "structure created successfully"
 ```
 
+### 2. Create a program where the argument is printed in the middle of the box
+```sh 
+#!/bin/bash
+
+#Create variable for arguments
+word=$1
+#Check how many letters are in the argument
+letters=${#word}
+
+#Create a 100 x 5 rectangle made out of asterisk
+for (( a=0; a<100; a++ ))
+do 
+	echo -n "*"
+done
+
+echo
+echo -n "*"
+for (( b=0; b<98; b++ ))
+do
+    echo -n " "
+done
+echo -n "*"
+echo
+echo -n "*"
+(( insert = (100 - $letters) / 2 - 1))
+for (( b=0; b<$insert; b++ ))
+do
+    echo -n " "
+done
+echo -n $word
+for (( b=0; b<$insert + 1; b++ ))
+do
+    echo -n " "
+done
+echo "*"
+echo -n "*"
+for (( b=0; b<98; b++ ))
+do
+    echo -n " "
+done
+echo -n "*"
+echo
+
+for (( a=0; a<100; a++ ))
+do
+    echo -n "*"
+done
+echo
+
+```
+
+
 
 Evaluation
 -----------
