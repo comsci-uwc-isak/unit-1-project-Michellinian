@@ -112,6 +112,12 @@ echo
 
 ```
 
+### 3. Development of the function: Create a new car
+1. Get inputs (Plates, Model, Color, Passenger number)
+2. Check number of arguments (if 4 then continue, if not exit "message")
+3. Write to main file with one extra line without erasing other entries
+4. Create car trip file with license plate.txt
+
 
 
 Evaluation
