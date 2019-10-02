@@ -14,10 +14,21 @@ Contents
 
 Planning
 ----------
-**Defining the Problem (Topic 1.1.1)**
-
+### Defining the Problem (Topic 1.1.1)
 The new system that we are going to create for the client is a program for recording information about the orders made by the customers. The car rental office would especially collect basic information about the distance driven for each car. This links with the syllabus 1.1.1 about "The context for which a new system is planned", because we are creating a new system of organizing car rental information. Since our client is a beginner in using computer, we need to create a program as simple as possible for our client. And while coding our program, we also need to think about the potential organizational issues that we will face through the process.
 
+### Solution proposed
+
+### Success Criteria
+These are the measurable outcomes: 
+1. A car can be created and stored in the database
+2. A car information can be edited
+3. A car can be deleted from the database 
+4. The installation is ***simple -> one step process***
+5. A summary (total/ average dustance travlled) can be generated for a particular car
+6. Trips can be recorded and stored for an existing car
+7. A basic database system is implemented
+8. A basic backup functionaltiy is avialable 
 
 Design
 ---------
@@ -31,31 +42,25 @@ Development
 ### 1. Script to install the app 
 The following script creates the app folder and inside it creates two more folders: db and scripts.
 ```sh 
-#!/bin/bash
+#!/bin/bash 
 
 #This file creates the folder structure for the minimal Car Rental App
 
 echo "Starting the installation"
 echo "Enter the path where you want to install. Press Enter"
 
-read path
+read path 
 
-#Moving to the desired location
-cd $path
+#Moving to the desired location 
+cd ~/Desktop
 echo "moving to $path"
-echo $pwd
-#Check for correct change directory
-if [ "$path" != "$pwd" ]; then
-        echo "Error creating the folder structure"
-        exit
-fi
+ 
+#Create App folder 
+mkdir CarRentalApp
 
-#Create App folder
-mkdir RentalCarApp
-
-#Create database/scripts folder inside the RentalCarApp
-cd RentalCarApp
-mkdir db
+#Create database/scripts folder inside the CarRentalApp
+cd CarRentalApp
+mkdir db 
 mkdir scripts
 
 echo "structure created successfully"
@@ -117,6 +122,8 @@ echo
 2. Check if the number of arguments are equal to 4 
 3. Write to main file with one extra line without erasing other entries
 4. Create car trip file with license plate.txt
+
+
 
 
 
