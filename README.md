@@ -67,7 +67,8 @@ mkdir scripts
 echo "structure created successfully"
 ```
 
-### 2. Create a program where the argument is printed in the middle of the box
+### 2. Code for showing message to the user
+This program prints the message for the user in a box created
 ```sh 
 #!/bin/bash
 
@@ -115,7 +116,6 @@ do
     echo -n "*"
 done
 echo
-
 ```
 
 ### 3. Development of the function: Create a new car
@@ -123,6 +123,30 @@ echo
 2. Check if the number of arguments are equal to 4 
 3. Write to main file with one extra line without erasing other entries
 4. Create car trip file with license plate.txt
+
+```sh 
+#!/bin/bash
+
+if [ $# -ne 4 ]; then
+        echo "Error with the number of arguments"
+        echo "Enter License Maker Model Passengers"
+        exit
+fi
+
+License=$1
+Maker=$2
+Model=$3
+Pp=$4
+
+echo "$License $Maker $Model $Pp" >> ~/Desktop/CarRentalApp/db/mainCarFile.txt
+echo "" > ~/Desktop/CarRentalApp/db/$License.txt
+
+bash frame "Installation Complete"
+```
+
+
+### 4. Development of another function: Record the trip information 
+
 
 
 
