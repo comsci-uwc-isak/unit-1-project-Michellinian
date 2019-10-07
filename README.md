@@ -79,8 +79,8 @@ letters=${#word}
 
 #Create a 100 x 5 rectangle made out of asterisk
 for (( a=0; a<100; a++ ))
-do 
-	echo -n "*"
+do
+        echo -n "*"
 done
 
 echo
@@ -92,13 +92,14 @@ done
 echo -n "*"
 echo
 echo -n "*"
-(( insert = (100 - $letters) / 2 - 1))
+(( insert = (100 - $letters) / 2 - 1 ))
 for (( b=0; b<$insert; b++ ))
 do
     echo -n " "
 done
 echo -n $word
-for (( b=0; b<$insert + 1; b++ ))
+(( rest = 100 - ($insert + $letters + 2 )))
+for (( b=0; b<rest; b++ ))
 do
     echo -n " "
 done
@@ -116,6 +117,7 @@ do
     echo -n "*"
 done
 echo
+
 ```
 
 ### 3. Development of the function: Create a new car
