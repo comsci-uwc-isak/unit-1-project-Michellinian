@@ -176,6 +176,9 @@ echo "$Distance $StartDayOfTrip $EndDayOfTrip" >> ~/Desktop/CarRentalApp/db/$Lic
 bash frame "Trip recorded successfully"
 ```
 
+
+### Development of Summary Action 
+
 Evaluation
 -----------
 Test 1: 
