@@ -42,3 +42,9 @@ solution proposed. After that we did a short presentation about our assignments 
 to choose one of the four tasks, which were "edit, summary, delete, backup", I chose edit, although I couldn't cactually code
 it, because I broke my computer. So I just summarized the steps of editting, and did a very brief presentation about it. I am 
 planning on working with the code later in the day.
+
+### Class 6: 
+For today's class we created a program, to test our previous programs that we created during the past classes. So far we created 4 programs: create.sh, record.sh, frame, and install.sh. We created a test program for create.sh and record.sh, and for the SL student, we were given a task to create a test program for the install.sh. It took me certain number of times to get it right but I managed to finish coding, thanks to my friends help. 
+
+### Class 7: 
+
