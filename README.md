@@ -191,8 +191,6 @@ On the first run there was an error in the code `if [ -f "db/TXM301.txt" ]; then
 I needed to create a code where it goes back to the CarRentalApp and access the db folder. New code: 
 `if [ -f "../db/TXM301.txt" ]; then`
 
-Test 3: 
-
 **Summary:**
 This program was developed by dynamic testing. dynamic testing is a way to develop a program 
 
