@@ -18,7 +18,7 @@ Planning
 The new system that we are going to create for the client is a program for recording information about the orders made by the customers. The car rental office would especially collect basic information about the distance driven for each car. This links with the syllabus 1.1.1 about "The context for which a new system is planned", because we are creating a new system of organizing car rental information. Since our client is a beginner in using computer, we need to create a program as simple as possible for our client. And while coding our program, we also need to think about the potential organizational issues that we will face through the process.
 
 ### Solution proposed
-For this problem, the first thing we need to consider is the fact that our client is not used to using a computer. So what we need to do is to create a very simple program, so that even the people who don't understand the computer system are able to use. First thing we need to create is an install program, where we ask the client to create a folder for storing all the information that they need. Also we want to create another program that shows that the installation of the folder is successful. As I mentioned, we want a program, that clearly shows the instructions to the users, and a program which tells you if the user did it right or wrong. What we also need to create is the program called create, where it creates a folder for all the car information, and another program called record where it stores all the additional information to an individual file of the car that has just been created by the user.
+For this problem, the first thing we need to consider is the fact that our client is not used to using a computer. So what we need to do is to create a very simple program, like a one step program, so that even the people who don't understand the computer system are able to use without any difficulties. We first need a program that does the installation process of the car rental app, in one step. It should be something like, when the user types in "install", it should automatically create the folder in the desktop. It is preferable that there are 2 folders in the folder, one storing all the data of the cars, and the other for putting all the scripts of the program inside. It is necessary that we have a program that records the car information that the users enter, into the database folder. These programs, as mentioned before should be amde user-friendly, especially for our clients. Also there can be some additional functions such as editting the files, creating a backup, etc.
 
 ### Success Criteria
 These are the measurable outcomes: 
@@ -34,7 +34,7 @@ These are the measurable outcomes:
 Design
 ---------
 ### First sketch of the system 
-[SystemDiagram](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1#G1KBj12ggXIOlJj7rTtTJUD-R3fKnx1MDV)
+![SystemDiagram](System_diagram.png)
 
 **Fig. 1** First sketch of the system showing the main input/output components, actions, and software requirements.
 
