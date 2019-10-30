@@ -20,6 +20,7 @@ The new system that we are going to create for the client is a program for recor
 ### Solution proposed
 For this problem, the first thing we need to consider is the fact that our client is not used to using a computer. So what we need to do is to create a very simple program, like a one step program, so that even the people who don't understand the computer system are able to use without any difficulties. We first need a program that does the installation process of the car rental app, in one step. It should be something like, when the user types in "install", it should automatically create the folder in the desktop. It is preferable that there are 2 folders in the folder, one storing all the data of the cars, and the other for putting all the scripts of the program inside. It is necessary that we have a program that records the car information that the users enter, into the database folder. These programs, as mentioned before should be amde user-friendly, especially for our clients. Also there can be some additional functions such as editting the files, creating a backup, etc.
 
+
 ### Success Criteria
 These are the measurable outcomes: 
 1. A car can be created and stored in the database
@@ -181,6 +182,11 @@ bash frame "Trip recorded successfully"
 
 Evaluation
 -----------
+
+### Checking success criterias 
+**1. A car can be created and stored in the database**
+
+
 Test 1: 
 The first run of the test file was unsuccessful because the Database folder was not existent.
 Also the create program did not store the license file inside the Database folder. Changing the line 
