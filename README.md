@@ -178,13 +178,157 @@ bash frame "Trip recorded successfully"
 ```
 
 
-### Development of Summary Action 
+### 5. Development of Summary Action 
+
+```sh 
+#!/bin/bash
+
+#This program summarizes the total distance of each car
+
+#Step 1: Check the number of arguments
+if [ $# -ne 1 ]; then
+  echo "Invalid number of arguments!"
+  echo "Please enter the license plate of the car"
+fi
+
+#Step 2: Check if the file exists in the database
+cd ../db
+FILE=$1
+if [ ! -f "$FILE.txt" ]; then
+  echo "File for car $FILE does not exist"
+  exit
+fi
+
+#Step 3: calculate the total km
+total=0
+while read line
+do
+  for km in $line
+  do
+    (( total=$total+$km ))
+    break
+  done
+done < "$FILE.txt"
+
+#Step 4: Show result nicel y
+cd ../scripts
+bash frame.sh "Total distacne travel for $FILE was $total"
+```
 
 Evaluation
 -----------
 
 ### Checking success criterias 
 **1. A car can be created and stored in the database**
+
+This is the code to test the script install.
+```sh 
+#Step 2: Check if the create.sh fucntions correctly without error
+
+#2.1 create a car using the script car
+cd ../scripts
+bash create.sh 80-49 nissan red 8
+
+#2.2 Check if the license.txt file was created
+if [ -f "../db/80-49.txt" ]; then
+  echo "txt file of the car was created successfully"
+else
+  echo "Test failed"
+fi
+
+#2.3 check that the car was added to the main file
+lastLine=$( tail -n 1 ../db/mainCarFile.txt )
+if [ "80-49 nissan red 8" == "$lastLine" ]; then
+  echo "Record was entered successfully"
+else
+  echo "Test failed"
+fi
+```
+This code essentially checks if the car has been created successfully, in the mainCarFile.txt. It also check if an individual .txt file for the car has been made and put into the db folder. The output of this program is this. 
+```sh 
+****************************************************************************************************
+*                                                                                                  *
+*                                    Car Installation Complete                                     *
+*                                                                                                  *
+****************************************************************************************************
+txt file of the car was created successfully
+Record was entered successfully
+```
+This shows that the create.sh is working without any errors. All the files that should've been created in the database is created correctly.
+
+**2. A car information can be edited**
+The following code is the code for the edit.sh: 
+```sh 
+#!/bin/bash
+
+#This program edit the information of an exiting car in the mainCarFile
+#User enters [license plate] [maker] [color] [passenger]
+
+if [ $# -ne 4 ]; then
+  echo "Invalid number of arguments"
+  echo "Enter License Maker Color Passengers"
+  exit
+fi
+
+license=$1
+maker=$2
+color=$3
+passenger=$4
+
+cd ../db
+
+#Check if the $license.txt exists
+if [ ! -f "$license.txt" ]; then
+  echo "File not found!"
+fi
+
+#identify the line with the given license plate and delete it
+sed -i '' "/^$license/d" mainCarFile.txt
+#add the new information
+echo "$license $maker $color $passenger" >> mainCarFile.txt
+cd ../scripts
+bash frame.sh "Car edited successfully"
+```
+When the user want to edit the information that they already entered, they can type in "bash edit.sh", followed with the new information that they want to substitute the old onew with. It requires 4 arguments, the license plate, maker, color, and the number of passengers. This allows the user to update their car information, without deleting the car and creating another file every time. 
+
+**3. A car can be deleted from the database**
+But also the user can of course, delete the unused cars. The following code shown below, allows them to delete the car information.
+```sh 
+#This program deleted the car file from db folder
+#It also deletes car information from the mainCarFile.txt
+
+cd ../db
+
+#Check the number of arguments
+license=$1
+if [ $# -ne 1 ]; then
+  echo "Invalid number of arguments!"
+  echo "Please enter the license of the car"
+fi
+
+#Check if the .txt file exist
+if [ ! -f "$license.txt" ]; then
+  echo "File does not exist!"
+else
+  rm $license.txt
+  bash ../scripts/frame.sh "The file was successfully deleted"
+  #delete the line from the mainCarFile.txt
+  sed -i '' "/$license/d" mainCarFile.txt
+  bash ../scripts/frame.sh "The line was successfully deleted"
+fi
+exit
+```
+
+**4. The installation is ***simple -> one step process*****
+For the script install, it has to be a one step, simple prcoess for the user. The code that has been uploaded above, under the section "Script to install the app", is the install.sh, and this allows the user to install the RentalCarApp as simply as possible. When the user type in "bash install.sh", it automatically creates the folder in the desktop.
+
+
+**5. A summary (total/ average dustance travlled) can be generated for a particular car**
+This is the code for summary.sh: 
+
+This code makes the user able to calculate the total distance a particular car drove for. This is also user friendly in a way that the user only has to type in the license number and it calculates the total distance for us.
+
+**
 
 
 Test 1: 
