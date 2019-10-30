@@ -39,6 +39,9 @@ Design
 
 **Fig. 1** First sketch of the system showing the main input/output components, actions, and software requirements.
 
+### How the RentalCarApp works
+The user will use their keyboard to input information that they want to store. Through all the actions that can be done in RentalCarApp, it allows the users to manipulate the information however they want to. The file structure of this RentalCarApp is inside the app folder, there are two folders; database folder and the scripts folder. The database folder is for the users to use. It stores every data the user inputs through their keyboard. The scripts folder contains all the code for the actions. The output for this program is screen / hard copy. The user can also backup all the information into for example a hard drive. 
+
 Development
 --------
 ### 1. Script to install the app 
@@ -179,7 +182,7 @@ bash frame "Trip recorded successfully"
 
 
 ### 5. Development of Summary Action 
-
+This code calculates the total distance of a particular car.
 ```sh 
 #!/bin/bash
 
@@ -214,6 +217,128 @@ done < "$FILE.txt"
 cd ../scripts
 bash frame.sh "Total distacne travel for $FILE was $total"
 ```
+
+
+### 6. Development of the script Delete
+This code uses arguments from the users. 
+1. Checks if it has the correct number of arguments
+2. Check if the file that the user is looking for exists 
+3. If it does delete the car file, along the line of the car in the mainCarFile.txt 
+```sh 
+#!/bin/bash
+
+#This program deleted the car file from db folder
+#It also deletes car information from the mainCarFile.txt
+
+cd ../db
+
+#Check the number of arguments
+license=$1
+if [ $# -ne 1 ]; then
+  echo "Invalid number of arguments!"
+  echo "Please enter the license of the car"
+fi
+
+#Check if the .txt file exist
+if [ ! -f "$license.txt" ]; then
+  echo "File does not exist!"
+else
+  rm $license.txt
+  bash ../scripts/frame.sh "The file was successfully deleted"
+  #delete the line from the mainCarFile.txt
+  sed -i '' "/$license/d" mainCarFile.txt
+  bash ../scripts/frame.sh "The line was successfully deleted"
+fi
+exit
+```
+
+
+### 7. Development of the script Edit
+This code should allow the user to edit the car file. 
+1. Check if the number of arguments type in by the user is a valid number 
+2. Check if the license number is an existing car 
+3. If it exists delete the car information in the mainCarFile.txt and rewrite it with the new information given in arguments
+```sh 
+#!/bin/bash
+
+#This program edit the information of an exiting car in the mainCarFile
+#User enters [license plate] [maker] [color] [passenger]
+
+if [ $# -ne 4 ]; then
+  echo "Invalid number of arguments"
+  echo "Enter License Maker Color Passengers"
+  exit
+fi
+
+license=$1
+maker=$2
+color=$3
+passenger=$4
+
+cd ../db
+
+#Check if the $license.txt exists
+if [ ! -f "$license.txt" ]; then
+  echo "File not found!"
+  exit 
+fi
+
+#identify the line with the given license plate and delete it
+sed -i '' "/^$license/d" mainCarFile.txt
+#add the new information
+echo "$license $maker $color $passenger" >> mainCarFile.txt
+cd ../scripts
+bash frame.sh "Car edited successfully"
+```
+
+
+### 8. Developing the uninstall.sh 
+Program for uninstalling the RentalCarApp. 
+1. Ask the user for confirmation 
+2. If the user answers yes, remove RentalCarApp from the desktop 
+```sh 
+#!/bin/bash
+
+#This program uninstalls the folders that was installed using the install.sh
+
+echo "Are you sure you want to uninstall RentalCarApp?  (Enter: Y or N)"
+read ans
+
+#If yes, remove the RentalCarApp from the Desktop
+if [ $ans = "Y" ]; then
+  cd ~/Desktop
+  rm -R RentalCarApp
+  bash frame.sh "Uninstallation complete"
+else
+  bash frame.sh "RentalCarApp is still in Desktop"
+  exit
+fi
+```
+
+
+### 9. Developing a script for backup 
+1. Get the location where the user wants to backup the RentalCarApp 
+2. If valid number of arguments entered, copy the folder and move the copy to the desired location 
+```sh 
+#!/bin/#!/usr/bin/env bash
+
+#This program creates a backup for the RentalCarApp folder
+
+#Get argument of where the user wants to create a backup
+location=$1
+
+#Check if the number of the arguments are correct
+if [ $# -ne 1 ]; then
+  echo "Invalid path! Enter an existing path"
+  echo "Backup falied"
+else
+  #Copy the RentalCarApp and put it the copy in another location
+  cp -a ~/Desktop/RentalCarApp $location
+  bash frame.sh "Backup succeeded"
+fi
+```
+
+
 
 Evaluation
 -----------
@@ -258,66 +383,11 @@ This shows that the create.sh is working without any errors. All the files that 
 
 **2. A car information can be edited**
 The following code is the code for the edit.sh: 
-```sh 
-#!/bin/bash
 
-#This program edit the information of an exiting car in the mainCarFile
-#User enters [license plate] [maker] [color] [passenger]
-
-if [ $# -ne 4 ]; then
-  echo "Invalid number of arguments"
-  echo "Enter License Maker Color Passengers"
-  exit
-fi
-
-license=$1
-maker=$2
-color=$3
-passenger=$4
-
-cd ../db
-
-#Check if the $license.txt exists
-if [ ! -f "$license.txt" ]; then
-  echo "File not found!"
-fi
-
-#identify the line with the given license plate and delete it
-sed -i '' "/^$license/d" mainCarFile.txt
-#add the new information
-echo "$license $maker $color $passenger" >> mainCarFile.txt
-cd ../scripts
-bash frame.sh "Car edited successfully"
-```
 When the user want to edit the information that they already entered, they can type in "bash edit.sh", followed with the new information that they want to substitute the old onew with. It requires 4 arguments, the license plate, maker, color, and the number of passengers. This allows the user to update their car information, without deleting the car and creating another file every time. 
 
 **3. A car can be deleted from the database**
 But also the user can of course, delete the unused cars. The following code shown below, allows them to delete the car information.
-```sh 
-#This program deleted the car file from db folder
-#It also deletes car information from the mainCarFile.txt
-
-cd ../db
-
-#Check the number of arguments
-license=$1
-if [ $# -ne 1 ]; then
-  echo "Invalid number of arguments!"
-  echo "Please enter the license of the car"
-fi
-
-#Check if the .txt file exist
-if [ ! -f "$license.txt" ]; then
-  echo "File does not exist!"
-else
-  rm $license.txt
-  bash ../scripts/frame.sh "The file was successfully deleted"
-  #delete the line from the mainCarFile.txt
-  sed -i '' "/$license/d" mainCarFile.txt
-  bash ../scripts/frame.sh "The line was successfully deleted"
-fi
-exit
-```
 
 **4. The installation is ***simple -> one step process*****
 For the script install, it has to be a one step, simple prcoess for the user. The code that has been uploaded above, under the section "Script to install the app", is the install.sh, and this allows the user to install the RentalCarApp as simply as possible. When the user type in "bash install.sh", it automatically creates the folder in the desktop.
