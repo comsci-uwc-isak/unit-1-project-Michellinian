@@ -490,19 +490,9 @@ The backup script allows the user to create a backup for the RentalCarApp. When 
 ****************************************************************************************************
 ```
 The user wanted to create a backup of this folder in the ComSci folder, located in the Documents folder. Let's check if it actually did that: 
+![BackupEvidence](Backup.png)
+It seems that that the folder has been backuped successfully!
 
-
-
-
-Test 1: 
-The first run of the test file was unsuccessful because the Database folder was not existent.
-Also the create program did not store the license file inside the Database folder. Changing the line 
-`echo "" > $License.txt` to 'echo "db/$License.txt" solved this issue.
-
-Test 2: 
-On the first run there was an error in the code `if [ -f "db/TXM301.txt" ]; then`, because it was still in the test folder, so 
-I needed to create a code where it goes back to the CarRentalApp and access the db folder. New code: 
-`if [ -f "../db/TXM301.txt" ]; then`
 
 **Summary:**
 This program was developed by dynamic testing. dynamic testing is a way to develop a program 
