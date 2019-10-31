@@ -339,6 +339,58 @@ fi
 ```
 
 
+### 10. Development of the test script 
+Test create script 
+1. Go to the scripts folder and execute create.sh 
+2. Check if the license.txt file exists
+3. Check that the car was also created inside the mainCarFile.txt 
+
+Test record script 
+1. Go to the scripts folder and execute record.sh 
+2. Check if the trip info was successfully added in the license.txt file 
+```sh 
+#!/bin/bash
+
+#This program tests if the install.sh, create.sh, and record.sh functions correctly
+
+#Step 1: Check if the create.sh fucntions correctly without error
+
+#1.1 create a car using the script car
+cd ../scripts
+bash create.sh 80-49 nissan red 8
+
+#1.2 Check if the license.txt file was created
+if [ -f "../db/80-49.txt" ]; then
+  echo "txt file of the car was created successfully"
+else
+  echo "Test failed"
+fi
+
+#1.3 check that the car was added to the main file
+lastLine=$( tail -n 1 ../db/mainCarFile.txt )
+if [ "80-49 nissan red 8" == "$lastLine" ]; then
+  echo "Record was entered successfully"
+else
+  echo "Test failed"
+fi
+
+
+#Step 2: Check if the record.sh works without any malfunction
+
+#2.1 record car trip information using script record
+cd ../scripts
+bash record.sh 80-49 4500 2019/08/21 2019/08/27
+
+#2.2 Check if the car trip info was entered correctly inside the txt file
+tripInfo=$( tail -n 1 ../db/80-49.txt )
+if [ "4500 2019/08/21 2019/08/27" == "$tripInfo" ]; then
+  echo "Trip Information was entered successfully"
+else
+  echo "Test failed"
+fi
+```
+
+
 
 Evaluation
 -----------
@@ -346,29 +398,7 @@ Evaluation
 ### Checking success criterias 
 **1. A car can be created and stored in the database**
 
-This is the code to test the script install.
-```sh 
-#Step 2: Check if the create.sh fucntions correctly without error
 
-#2.1 create a car using the script car
-cd ../scripts
-bash create.sh 80-49 nissan red 8
-
-#2.2 Check if the license.txt file was created
-if [ -f "../db/80-49.txt" ]; then
-  echo "txt file of the car was created successfully"
-else
-  echo "Test failed"
-fi
-
-#2.3 check that the car was added to the main file
-lastLine=$( tail -n 1 ../db/mainCarFile.txt )
-if [ "80-49 nissan red 8" == "$lastLine" ]; then
-  echo "Record was entered successfully"
-else
-  echo "Test failed"
-fi
-```
 This code essentially checks if the car has been created successfully, in the mainCarFile.txt. It also check if an individual .txt file for the car has been made and put into the db folder. The output of this program is this. 
 ```sh 
 ****************************************************************************************************
