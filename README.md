@@ -46,6 +46,10 @@ The user will use their keyboard to input information that they want to store. T
 
 **Fig. 2** First sketch of the flow diagram for the script where messages for the users are showed
 
+![create.sh flowchart](create.png)
+
+**Fig. 3** Sketch of how the car installation program would work. 
+
 
 
 Development
