@@ -411,6 +411,7 @@ Evaluation
 
 ### Checking success criterias 
 **1. A car can be created and stored in the database**
+
 The test.sh code essentially checks if the car has been created successfully, in the mainCarFile.txt. It also checks if an individual .txt file for the car has been made and put into the db folder. The output of this program is this. 
 ```sh 
 ****************************************************************************************************
@@ -424,6 +425,7 @@ Record was entered successfully
 This shows that the create.sh is working without any errors. All the files that should've been created in the database is created correctly.
 
 **2. A car information can be edited**
+
 This is enabled by the edit.sh program. When the user want to edit the information that they already entered, they can type in "bash edit.sh", followed with the new information that they want to substitute the old onew with. It requires 4 arguments, the license plate, maker, color, and the number of passengers. This allows the user to update their car information, without deleting the car and creating another file every time. For example let's say the previous information in 40-67.txt was: 
 ```sh 
 300 2018/09/11 2018/09/23
@@ -436,14 +438,17 @@ The new information in the 40-67.txt should be changed accordingly to the new ar
 
 
 **3. A car can be deleted from the database**
+
 The users can also just delete the information, instead of changing them. The delete.sh allows the users to delete unnecessary information about the car. When the user types in "bash delete.sh $license" it finds the txt file with the license name that the user typed in as an argument, and delete the whole file. It also deletes the information from the mainCarFile.txt.
 
 
 **4. The installation is ***simple -> one step process*****
+
 For the script install, it has to be a one step, simple process for the user. The code that has been uploaded above, under the section "Script to install the app", is the install.sh, and this allows the user to install the RentalCarApp as simply as possible. When the user type in "bash install.sh", it automatically creates the folder in the desktop.
 
 
 **5. A summary (total/ average dustance travlled) can be generated for a particular car**
+
 This code makes the user able to calculate the total distance a particular car drove for. This is also user friendly in a way that the user only has to type in the license number and it calculates the total distance for us. The input from the user would be for example:
 ```sh 
 bash summary.sh 40-67
@@ -465,6 +470,7 @@ Then the output of this program is this:
 ```
 
 **6. Trips can be recorded and stored for an existing car**
+
 The reocord script is basically for doing this. It records the trip information that the user types in as arguments, and then those information automaitcally gets copied into the car file. When the user types in bash, command, arguments:
 ```sh 
 bash record.sh 40-67 1900 2018/10/14 2018/10/31
@@ -477,9 +483,11 @@ bash record.sh 40-67 1900 2018/10/14 2018/10/31
 This appears on the terminal. If we go to the 40-67.txt we will see that the file contains the new arguments the user typed in.
 
 **7. A basic database system is implemented**
+
 In the very first procedure of using the app, which is to install the RentalCarApp, it also installs the database older inside the RentalCarApp folder. This means that the basic database system is already implemented inofrst place.
 
 **8. A basic backup functionaltiy is avialable**
+
 The backup script allows the user to create a backup for the RentalCarApp. When the user types in for example: 
 ```sh 
  bash backup.sh ~/Documents/ComSci/
