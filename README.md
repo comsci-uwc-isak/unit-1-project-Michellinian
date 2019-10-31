@@ -20,7 +20,6 @@ The new system that we are going to create for the client is a program for recor
 ### Solution proposed
 For this problem, the first thing we need to consider is the fact that our client is not used to using a computer. So what we need to do is to create a very simple program, like a one step program, so that even the people who don't understand the computer system are able to use without any difficulties. We first need a program that does the installation process of the car rental app, in one step. It should be something like, when the user types in "install", it should automatically create the folder in the desktop. It is preferable that there are 2 folders in the folder, one storing all the data of the cars, and the other for putting all the scripts of the program inside. It is necessary that we have a program that records the car information that the users enter, into the database folder. These programs, as mentioned before should be amde user-friendly, especially for our clients. Also there can be some additional functions such as editting the files, creating a backup, etc.
 
-
 ### Success Criteria
 These are the measurable outcomes: 
 1. A car can be created and stored in the database
@@ -40,7 +39,14 @@ Design
 **Fig. 1** First sketch of the system showing the main input/output components, actions, and software requirements.
 
 ### How the RentalCarApp works
-The user will use their keyboard to input information that they want to store. Through all the actions that can be done in RentalCarApp, it allows the users to manipulate the information however they want to. The file structure of this RentalCarApp is inside the app folder, there are two folders; database folder and the scripts folder. The database folder is for the users to use. It stores every data the user inputs through their keyboard. The scripts folder contains all the code for the actions. The output for this program is screen / hard copy. The user can also backup all the information into for example a hard drive. 
+The user will use their keyboard to input information that they want to store. Through all the actions that can be done in RentalCarApp, it allows the users to manipulate the information however they want to. The file structure of this RentalCarApp is inside the app folder, there are two folders; database folder and the scripts folder. The database folder is for the users to use. It stores every data the user inputs through their keyboard. The scripts folder contains all the code for the actions. The output for this program is screen / hard copy. The user can also backup all the information into for example a hard drive.
+
+### Algorithm flow diagrams
+![frame_flowchart](IMG_3182.HEIC)
+
+**Fig. 2** First sketch of the flow diagram for the script where messages for the users are showed
+
+
 
 Development
 --------
