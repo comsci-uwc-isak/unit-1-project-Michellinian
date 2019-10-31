@@ -42,7 +42,7 @@ Design
 The user will use their keyboard to input information that they want to store. Through all the actions that can be done in RentalCarApp, it allows the users to manipulate the information however they want to. The file structure of this RentalCarApp is inside the app folder, there are two folders; database folder and the scripts folder. The database folder is for the users to use. It stores every data the user inputs through their keyboard. The scripts folder contains all the code for the actions. The output for this program is screen / hard copy. The user can also backup all the information into for example a hard drive.
 
 ### Algorithm flow diagrams
-![FrameFlowchart](frame.png)
+
 
 **Fig. 2** First sketch of the flow diagram for the script where messages for the users are showed
 
