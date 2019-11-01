@@ -501,6 +501,15 @@ The user wanted to create a backup of this folder in the ComSci folder, located 
 ![BackupEvidence](Backup.png)
 It seems that that the folder has been backuped successfully!
 
+### Improvements in the future
+**1. Easier location designation for the user**
+
+In the current program, whenever the user had to type in the location of the folder, for example in the backup.sh. the user had to type in the exact location of the folder like this:
+```sh 
+bash backup.sh ~/Desktop/backup
+```
+The user has to know a certain amount of knowledge of how to use the computer, or else they cannot designate the folder they want to back it up to. We need to find an easier way to determine the location, like when the user types in bakcup folder, the computer finds the backup folder, no matter wherever it is and copy the folder into there. This would the process for the user, a lot easier. 
+
 
 **Summary:**
 This program was developed by dynamic testing. dynamic testing is a way to develop a program 
