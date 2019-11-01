@@ -106,6 +106,7 @@ mkdir db
 cd ~/Desktop/CarApp
 cp -r scripts/ ~/Desktop/RentalCarApp/scripts
 ```
+This fixed the problem that I was facing before. 
 
 
 
@@ -114,54 +115,57 @@ This program prints the message for the user in a box created
 ```sh 
 #!/bin/bash
 
-#Create variable for arguments
-word=$1
-#Check how many letters are in the argument
-letters=${#word}
+#Prpgram that create pop-out message for the user
 
-#Create a 100 x 5 rectangle made out of asterisk
+word=$1
+letter=${#word}
+
+#First line
 for (( a=0; a<100; a++ ))
 do
-        echo -n "*"
+  echo -n "*"
 done
-
 echo
+
+#Second line
 echo -n "*"
 for (( b=0; b<98; b++ ))
 do
-    echo -n " "
-done
-echo -n "*"
-echo
-echo -n "*"
-(( insert = (100 - $letters) / 2 - 1 ))
-for (( b=0; b<$insert; b++ ))
-do
-    echo -n " "
-done
-echo -n $word
-(( rest = 100 - ($insert + $letters + 2 )))
-for (( b=0; b<rest; b++ ))
-do
-    echo -n " "
+  echo -n " "
 done
 echo "*"
+
+#Third line (with the word)
+echo -n "*"
+(( insertOne = (100 - $letter)/ 2 - 1 ))
+for (( b=0; b<$insertOne; b++ ))
+do
+  echo -n " "
+done
+echo -n $word
+(( insertTwo = 100 - ($insertOne + $letter) - 2 ))
+for (( b=0; b<$insertTwo; b++ ))
+do
+  echo -n " "
+done
+echo "*"
+
+#Fourth line
 echo -n "*"
 for (( b=0; b<98; b++ ))
 do
-    echo -n " "
+  echo -n " "
 done
-echo -n "*"
-echo
+echo "*"
 
+#Last line
 for (( a=0; a<100; a++ ))
 do
-    echo -n "*"
+  echo -n "*"
 done
 echo
-
 ```
-There were a lot of difficulties
+There were a lot of difficulties developing this code. The mathematical calculation of how to insert the word in the center of the box was the hard part for me. It took several tries to create the correct equation. My previous code, worked in some words, but for other words it didn't function correctly. After adjusting some numbers in the equation, I managed to make a code that works in every case.
 
 ### 3. Development of the function: Create a new car
 1. Get inputs (Plates, Model, Color, Passenger number)
@@ -172,21 +176,23 @@ There were a lot of difficulties
 ```sh 
 #!/bin/bash
 
+#This program creates a new car and its own .txt file for storing all the information of the car
 if [ $# -ne 4 ]; then
-        echo "Error with the number of arguments"
-        echo "Enter License Maker Model Passengers"
-        exit
+  echo "Error with the number of arguments"
+  echo "Enter License Maker Color Passengers"
+  exit
 fi
 
-License=$1
-Maker=$2
-Model=$3
-Pp=$4
+license=$1
+maker=$2
+color=$3
+passenger=$4
 
-echo "$License $Maker $Model $Pp" >> ~/Desktop/CarRentalApp/db/mainCarFile.txt
-echo "" > ~/Desktop/CarRentalApp/db/$License.txt
+#Printing all the information entered by the user, inside the mainCarFile.txt
+echo "$license $maker $color $passenger" >> ../db/mainCarfile.txt
+echo "" > ../db/$license.txt
 
-bash frame "Installation Complete"
+bash frame.sh "Car Installation Complete"
 ```
 
 
@@ -198,25 +204,26 @@ bash frame "Installation Complete"
 ```sh 
 #!/bin/bash
 
-#This program records the details (km, startOfTrip, endOfTrip) in the individual .txt files of the cars
+#This file records the trip information of the car and creates an individual file
+
 if [ $# -ne 4 ]; then
-        echo "Error with the number of arguments"
-        echo "Enter the information in the following order: License Distance StartDayOfTrip EndDayOfTrip"
-        exit
+    echo "Error with the number of arguments"
+    echo "Enter License Distance StartDayOfTrip EndDayOfTrip"
+    exit
 fi
 
-License=$1
-Distance=$2
-StartDayOfTrip=$3
-EndDayOfTrip=$4
+license=$1
+distance=$2
+start=$3
+end=$4
 
 #Check if the file exist
-if [ ! -f $License.txt ]; then
-        echo "Car does not exist"
-        exit
+if [ ! -f "../db/$license.txt" ]; then
+    echo "Car does not exist"
+    exit
 fi
-echo "$Distance $StartDayOfTrip $EndDayOfTrip" >> ~/Desktop/CarRentalApp/db/$License.txt
-bash frame "Trip recorded successfully"
+echo "$distance $start $end" >> ../db/$license.txt
+bash frame.sh "Trip recorded successfully"
 ```
 
 
@@ -276,6 +283,7 @@ license=$1
 if [ $# -ne 1 ]; then
   echo "Invalid number of arguments!"
   echo "Please enter the license of the car"
+  exit
 fi
 
 #Check if the .txt file exist
@@ -290,6 +298,11 @@ else
 fi
 exit
 ```
+My first worked, although there was an error with the code:
+```sh 
+bash frame.sh "The file was successfully deleted"
+```
+It took me a while to figure out that the frame.sh could not be executed because, the frame.sh was located in a different file. This is why I had to add the `bash ../scripts/frame.sh` part in the code. Now that I told the computer that the frame.sh is inside the scripts folder, it can successfully execute the frame script. 
 
 
 ### 7. Development of the script Edit
