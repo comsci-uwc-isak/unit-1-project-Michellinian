@@ -61,29 +61,53 @@ Development
 ### 1. Script to install the app 
 The following script creates the app folder and inside it creates two more folders: db and scripts.
 ```sh 
-#!/bin/bash 
+#!/bin/bash
 
 #This file creates the folder structure for the minimal Car Rental App
 
 echo "Starting the installation"
-echo "Enter the path where you want to install. Press Enter"
+echo "Installing the RentalCarApp in the desktop"
 
-read path 
-
-#Moving to the desired location 
+#Moving to the desktop
 cd ~/Desktop
-echo "moving to $path"
- 
-#Create App folder 
-mkdir CarRentalApp
 
-#Create database/scripts folder inside the CarRentalApp
-cd CarRentalApp
-mkdir db 
-mkdir scripts
+#Create App folder
+mkdir RentalCarApp
+
+#Create database/scripts/tests folder inside the RentalCarApp
+cd RentalCarApp
+mkdir db
+
+cd ~/Desktop/CarApp
+cp -r scripts/ ~/Desktop/RentalCarApp/scripts
 
 echo "structure created successfully"
 ```
+I changed this code several times.
+1. Ask the user for the location and create the folder in that location 
+2. Because of how the user had to type in the exact location of the folder and it wasn't user friendly, I created another code, which automatically creates the folders in the desktop 
+3. I initally created a code that said something like this:
+```sh 
+mkdir RentalCarApp
+cd RentalCarApp
+mkdir db 
+mkdir scripts 
+```
+Although, when the user executed the install script, all the scripts that were inside would be initialized. Therefore, we had to create a CarApp which has all the scripts inside, and then create another all called RentalCarApp, for the users only. To do this we used the copy command to copy the scripts folder inside the CarApp and move it to the new RentalCarApp. The new code is this: 
+```sh 
+#Create App folder
+mkdir RentalCarApp
+
+#Create database/scripts/tests folder inside the RentalCarApp
+cd RentalCarApp
+mkdir db
+
+#Copy the scripts folder from the carapp and install it in the RentalCarApp
+cd ~/Desktop/CarApp
+cp -r scripts/ ~/Desktop/RentalCarApp/scripts
+```
+
+
 
 ### 2. Code for showing message to the user
 This program prints the message for the user in a box created
@@ -137,6 +161,7 @@ done
 echo
 
 ```
+There were a lot of difficulties
 
 ### 3. Development of the function: Create a new car
 1. Get inputs (Plates, Model, Color, Passenger number)
@@ -509,6 +534,8 @@ In the current program, whenever the user had to type in the location of the fol
 bash backup.sh ~/Desktop/backup
 ```
 The user has to know a certain amount of knowledge of how to use the computer, or else they cannot designate the folder they want to back it up to. We need to find an easier way to determine the location, like when the user types in bakcup folder, the computer finds the backup folder, no matter wherever it is and copy the folder into there. This would the process for the user, a lot easier. 
+
+**2. 
 
 
 **Summary:**
