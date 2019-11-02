@@ -39,7 +39,7 @@ Design
 **Fig. 1** First sketch of the system showing the main input/output components, actions, and software requirements.
 
 ### How the RentalCarApp works
-The user will use their keyboard to input information that they want to store. Through all the actions that can be done in RentalCarApp, it allows the users to manipulate the information however they want to. The file structure of this RentalCarApp is inside the app folder, there are two folders; database folder and the scripts folder. The database folder is for the users to use. It stores every data the user inputs through their keyboard. The scripts folder contains all the code for the actions. The output for this program is screen / hard copy. The user can also backup all the information into for example a hard drive.
+The user will use their keyboard to input information that they want to store. Through all the actions that can be done in RentalCarApp, it allows the users to manipulate the information however they want to. The file structure of this RentalCarApp: inside the app folder, there are two folders; database folder and the scripts folder. The database folder is for the users to use. It stores every data the user inputs through their keyboard. The scripts folder contains all the code for the actions. The output for this program is screen / hard copy. The user can also backup all the information into for example a hard drive.
 
 ### Algorithm flow diagrams
 ![FrameFlowchart](frame.png)
@@ -501,7 +501,7 @@ Then the output of this program is this:
 ```sh 
 ****************************************************************************************************
 *                                                                                                  *
-*                             Total distacne travel for 40-67 was 6500                             *
+*                             Total distance travel for 40-67 was 6500                             *
 *                                                                                                  *
 ****************************************************************************************************
 
@@ -546,10 +546,13 @@ In the current program, whenever the user had to type in the location of the fol
 ```sh 
 bash backup.sh ~/Desktop/backup
 ```
-The user has to know a certain amount of knowledge of how to use the computer, or else they cannot designate the folder they want to back it up to. We need to find an easier way to determine the location, like when the user types in bakcup folder, the computer finds the backup folder, no matter wherever it is and copy the folder into there. This would the process for the user, a lot easier. 
+The user has to know a certain amount of knowledge of how to use the computer, or else they cannot designate the folder they want to back it up to. We need to find an easier way to determine the location, like when the user types in bakcup folder, the computer finds the backup folder, no matter wherever it is and copy the folder into there. This would make the process for the user, a lot easier. 
+
+**2. Insatllation**
+For the current installation, the user has to first go into to the CarApp folder in order to install the RentalCarApp folder. This is a little user-unfriendly, considering that our client is not used to using a computer. We need to make the process as simple as possible for them. It would've been better if the install script was easier to access for the user, so that they don't have to type `cd ../CarApp` to go into carapp to find the install.sh.
 
 
 **Summary:**
-This program was developed by dynamic testing. dynamic testing is a way to develop a program 
+This program was developed by **dynamic testing**. Dynamic testing is a type of software testing, where we test the actual code by putting user input, to see if the output is the desired answer or not. In this program, we tested by putting user input while developing the program, to find any errors that occured, beforehand so that I wouldn't have to fix every errors at the last. Dynamic testing made the development of the program easier and more clear. Also **white-box testing** is another type of sofware testing style that I used. White-box testing is where the tester, usually the developer, tests the user input and output of the code, by checking the actual code that the developer developed. I knew what was going on with the code that I created, therefore this would be a white-box testing. 
 
 
