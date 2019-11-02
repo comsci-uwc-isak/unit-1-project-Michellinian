@@ -512,6 +512,7 @@ bash delete.sh LXY98
 Arata Katayama
 ```
 Descriptiion of the delete script. 
+These are just the script of the definition of each scripts. When the user wants to access them they need to type in `man \nameOfScript`. By doing this the user can see the man pages and familiarize themselves with what each script is about. Also for the developer, when creating man page, we should be careful if the name of the scripts are different. Because the script name and man page name are the same, it is better and safer if we created in a folder.
 
 
 ### Checking all the scripts functionality
