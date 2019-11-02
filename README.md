@@ -442,6 +442,17 @@ else
 fi
 ```
 
+### Checking all the scripts functionality
+| Scripts | Criteria | Check |
+| --- | --- | --- | 
+| install.sh | the RentalCarApp created in the desktop; database & scripts folders created in the app folder | YES |
+| create.sh | car file created in the db folder; mainCarFile.txt updated | YES |
+| record.sh | trip information updated in the car file | YES |
+| edit.sh | update the mainCarFile.txt with new information | YES |
+| delete.sh | remove car file from db folder remove line in mainCarFile.txt | YES |
+| summary.sh | show the sum of trip distance of a car assigned | YES |
+| backup.sh | copy the app folder to location designated by user | YES |
+| uninstall.sh | delete the entire RentalCarApp folder | YES |
 
 
 Evaluation
