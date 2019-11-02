@@ -366,6 +366,7 @@ else
   exit
 fi
 ```
+In this uninstall program, it is very important to ask the user if they really want to uninstall the program. This is because if you uninstall the program all the database the user created would be removed from the computer. This is why it is necessary to ask for confirmation of the user is they want to remove the folder.
 
 
 ### 9. Developing a script for backup 
@@ -389,54 +390,73 @@ else
   bash frame.sh "Backup succeeded"
 fi
 ```
-
+In this script `cp -a ~/Desktop...` essentially copies the entire directory, and sends the copy to another location. The location is set by the user, by arguments. 
 
 ### 10. Development of the test script 
-Test create script 
+**1. Test install script**
+1. Execute install.sh 
+2. If db and scripts folder found echo "test successful"
+```sh 
+#!/bin/bash
+
+#This program tests the functionality of install.sh
+#Step 1: execute install.sh
+cd ../
+bash install.sh
+
+#Step 2: check if the database and scritps folders have been created
+if [ -d "~/Desktop/RentalCarApp/db" ] && [ -d "~/Desktop/RentalCarApp/scripts/" ]; then
+  echo "2 folders found: successful"
+else
+  echo "folders not found!"
+fi
+```
+
+
+**2. Test create script** 
 1. Go to the scripts folder and execute create.sh 
 2. Check if the license.txt file exists
 3. Check that the car was also created inside the mainCarFile.txt 
+```sh 
+#!/bin/bash
 
-Test record script 
+#This test program tests the functionality of create.sh
+#Step 1: execute create.sh
+cd ../scripts
+bash create.sh 50-05 lexus blue 5
+
+#Step 2: check if the car file exists
+if [ -f "../db/50-05.txt" ]; then
+  echo "Found file: passed"
+else
+  echo "File not found!"
+fi
+
+#Step 3: Check if the mainCarFile has been updated
+lastLine=$( tail -n 1 ../db/mainCarFile.txt )
+if [ "50-05 lexus blue 5" == "$lastLine" ]; then
+  echo "Record was entered successfully: passed"
+else
+  echo "Test failed"
+fi
+```
+The command `lastLine=$( tail -n 1 ../db/mainCarFile.txt )` was new to me. This was the only difficulty in this code. For the rest it just uses if statements to check if the file exists or not, which is very simple.
+
+**3. Test record script**
 1. Go to the scripts folder and execute record.sh 
 2. Check if the trip info was successfully added in the license.txt file 
 ```sh 
 #!/bin/bash
 
-#This program tests if the install.sh, create.sh, and record.sh functions correctly
-
-#Step 1: Check if the create.sh fucntions correctly without error
-
-#1.1 create a car using the script car
+#This program tests the functionality of record.sh
+#Step 1: execute record.sh
 cd ../scripts
-bash create.sh 80-49 nissan red 8
+bash record.sh 50-05 600 2019/10/15 2019/10/20
 
-#1.2 Check if the license.txt file was created
-if [ -f "../db/80-49.txt" ]; then
-  echo "txt file of the car was created successfully"
-else
-  echo "Test failed"
-fi
-
-#1.3 check that the car was added to the main file
-lastLine=$( tail -n 1 ../db/mainCarFile.txt )
-if [ "80-49 nissan red 8" == "$lastLine" ]; then
-  echo "Record was entered successfully"
-else
-  echo "Test failed"
-fi
-
-
-#Step 2: Check if the record.sh works without any malfunction
-
-#2.1 record car trip information using script record
-cd ../scripts
-bash record.sh 80-49 4500 2019/08/21 2019/08/27
-
-#2.2 Check if the car trip info was entered correctly inside the txt file
-tripInfo=$( tail -n 1 ../db/80-49.txt )
-if [ "4500 2019/08/21 2019/08/27" == "$tripInfo" ]; then
-  echo "Trip Information was entered successfully"
+#Step 2: Check if the car file is updated
+tripInfo=$( tail -n 1 ../db/50-05.txt )
+if [ "600 2019/10/15 2019/10/20" == "$tripInfo" ]; then
+  echo "Trip Information was entered successfully: passed"
 else
   echo "Test failed"
 fi
@@ -453,6 +473,7 @@ fi
 | summary.sh | show the sum of trip distance of a car assigned | YES |
 | backup.sh | copy the app folder to location designated by user | YES |
 | uninstall.sh | delete the entire RentalCarApp folder | YES |
+
 
 
 Evaluation
@@ -559,8 +580,11 @@ bash backup.sh ~/Desktop/backup
 ```
 The user has to know a certain amount of knowledge of how to use the computer, or else they cannot designate the folder they want to back it up to. We need to find an easier way to determine the location, like when the user types in bakcup folder, the computer finds the backup folder, no matter wherever it is and copy the folder into there. This would make the process for the user, a lot easier. 
 
-**2. Insatllation**
+**2. Installation**
 For the current installation, the user has to first go into to the CarApp folder in order to install the RentalCarApp folder. This is a little user-unfriendly, considering that our client is not used to using a computer. We need to make the process as simple as possible for them. It would've been better if the install script was easier to access for the user, so that they don't have to type `cd ../CarApp` to go into carapp to find the install.sh.
+
+**3. Uninstall scritp**
+Since uninstall deletes every data the user typed in, it is very important to ask if they really want to delete the folder. Also it would've been better if I asked the user if they have done the backup for the folder, in case the user needs after they've uninstalled the folder. Although sometimes, the user don't remember if they created a backup or not. Therefore, the most effective way to develop this uninstall script is by implementing a code where it checks if the user created a backup folder or not. Then the user would immediately know that there is a backup, so even if they uninstall the RentalCarApp folder, it's entirety would not be deleted.
 
 
 **Summary:**
