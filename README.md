@@ -298,7 +298,7 @@ else
 fi
 exit
 ```
-My first worked, although there was an error with the code:
+My first code worked, although there was an error with the code:
 ```sh 
 bash frame.sh "The file was successfully deleted"
 ```
@@ -462,6 +462,58 @@ else
 fi
 ```
 
+
+### 11. Creating Man Pages
+Man pages are for the users, shortened for manual pages. It gives every information of the scripts for the user, so that they can understand what each each script is for.
+**1. Create.sh**
+```sh 
+.TH man 6 "28 Oct 2019" "1.0" "create man page"
+.SH NAME 
+create \- create a new car 
+.SH SYNOPSIS
+bash create.sh [license] [model] [color] [passengers]
+.SH DESCRIPTION
+create is a script that creates a new record in the database
+.SH EXAMLPES
+bash create.sh LXY98 Mazda Red 3 
+.SH AUTHOR 
+Arata Katayama
+```
+Description for the create script. 
+
+**2. Record.sh**
+```sh 
+.TH man 6 "28 Oct 2019" "1.0" "record man page"
+.SH NAME 
+record \- record the trip information of the car
+.SH SYNOPSIS
+bash record.sh [license] [distance] [dateOfTheStart] [dateOfTheEnd]
+.SH DESCRIPTION
+record is a script that inputs the new information in the $license.txt file. 
+.SH EXAMLPES
+bash record.sh LXY98 4500 2019/07/14 2019/07/23 
+.SH AUTHOR 
+Arata Katayama
+```
+Description of the record.sh.
+
+**3. Delete.sh**
+```sh 
+.TH man 6 "28 Oct 2019" "1.0" "delete man page"
+.SH NAME 
+delete \- delete the car file as well as the corresponding line in the mainCarFile.txt
+.SH SYNOPSIS 
+bash delete.sh [license]
+.SH DESCRIPTION
+delete is a script that removes the unwanted / unnecessary car file from the db folder, and also deletes the line corresponding the car in the mainCarFile.txt.
+.SH EXAMPLES
+bash delete.sh LXY98
+.SH AUTHOR
+Arata Katayama
+```
+Descriptiion of the delete script. 
+
+
 ### Checking all the scripts functionality
 | Scripts | Criteria | Check |
 | --- | --- | --- | 
@@ -583,11 +635,11 @@ The user has to know a certain amount of knowledge of how to use the computer, o
 **2. Installation**
 For the current installation, the user has to first go into to the CarApp folder in order to install the RentalCarApp folder. This is a little user-unfriendly, considering that our client is not used to using a computer. We need to make the process as simple as possible for them. It would've been better if the install script was easier to access for the user, so that they don't have to type `cd ../CarApp` to go into carapp to find the install.sh.
 
-**3. Uninstall scritp**
+**3. Uninstall script**
 Since uninstall deletes every data the user typed in, it is very important to ask if they really want to delete the folder. Also it would've been better if I asked the user if they have done the backup for the folder, in case the user needs after they've uninstalled the folder. Although sometimes, the user don't remember if they created a backup or not. Therefore, the most effective way to develop this uninstall script is by implementing a code where it checks if the user created a backup folder or not. Then the user would immediately know that there is a backup, so even if they uninstall the RentalCarApp folder, it's entirety would not be deleted.
 
 
-**Summary:**
+### Summary
 This program was developed by **dynamic testing**. Dynamic testing is a type of software testing, where we test the actual code by putting user input, to see if the output is the desired answer or not. In this program, we tested by putting user input while developing the program, to find any errors that occured, beforehand so that I wouldn't have to fix every errors at the last. Dynamic testing made the development of the program easier and more clear. Also **white-box testing** is another type of sofware testing style that I used. White-box testing is where the tester, usually the developer, tests the user input and output of the code, by checking the actual code that the developer developed. I knew what was going on with the code that I created, therefore this would be a white-box testing. 
 
 
