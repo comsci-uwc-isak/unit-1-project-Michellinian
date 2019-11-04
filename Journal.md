@@ -46,5 +46,3 @@ planning on working with the code later in the day.
 ### Class 6: 
 For today's class we created a program, to test our previous programs that we created during the past classes. So far we created 4 programs: create.sh, record.sh, frame, and install.sh. We created a test program for create.sh and record.sh, and for the SL student, we were given a task to create a test program for the install.sh. It took me certain number of times to get it right but I managed to finish coding, thanks to my friends help. 
 
-### Class 7: 
-
