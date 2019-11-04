@@ -1,4 +1,10 @@
 ![CarRental](logo.png)
+```.py
+Marks=23
+Demo=4
+Total=(Marks + Demo) = 27
+```
+**Graded Nov 5**
 
 Car Rental Minimal App
 ===========================
@@ -17,6 +23,8 @@ Planning
 ### Defining the Problem (Topic 1.1.1)
 The new system that we are going to create for the client is a program for recording information about the orders made by the customers. The car rental office would especially collect basic information about the distance driven for each car. This links with the syllabus 1.1.1 about "The context for which a new system is planned", because we are creating a new system of organizing car rental information. Since our client is a beginner in using computer, we need to create a program as simple as possible for our client. And while coding our program, we also need to think about the potential organizational issues that we will face through the process.
 
+
+
 ### Solution proposed
 For this problem, the first thing we need to consider is the fact that our client is not used to using a computer. So what we need to do is to create a very simple program, like a one step program, so that even the people who don't understand the computer system are able to use without any difficulties. We first need a program that does the installation process of the car rental app, in one step. It should be something like, when the user types in "install", it should automatically create the folder in the desktop. It is preferable that there are 2 folders in the folder, one storing all the data of the cars, and the other for putting all the scripts of the program inside. It is necessary that we have a program that records the car information that the users enter, into the database folder. These programs, as mentioned before should be amde user-friendly, especially for our clients. Also there can be some additional functions such as editting the files, creating a backup, etc. We will be doing all of this in bash programming language.
 
@@ -31,6 +39,17 @@ These are the measurable outcomes:
 7. A basic database system is implemented
 8. A basic backup functionaltiy is avialable 
 
+## Criterion A
+|**level**|**Description**|
+|-----|------------|
+|4|The client in the car rental office is identified and his situation is stated. The rationale for choosing the proposed product is partially explained and includes some appropriate criteria for evaluating the success of the product.|
+```.sh
+Rationale
+*Your success criteria are mostly reasonable and measurable. Good job here. Some adjectives such as basic needs a definition so that they can be measured.
+*The definition of the problem and the client is limited so we dont get a full picture of why he needs a new computer system
+*You justificaiton for selecting the proposed solution and tools, meaning working with Bash, is not mentioned. This is a critical point since the choice of programming platform will impact the outcome.
+
+```
 Design
 ---------
 ### First sketch of the system 
@@ -54,7 +73,16 @@ The user will use their keyboard to input information that they want to store. T
 
 **Fig. 4** Flow chart of how the delete program would work.
 
-
+## Criterion B
+|**level**|**Description**|
+|-----|------------|
+|8|An outline test plan is included but partially complete. A system diagram and some flow diagrams for algorithms in the product are included. They provide a basic understanding of how the product was developed.|
+```.sh
+Rationale
+*Great job with the system diagram. I understood that the paragraph that you have under the diagram was the explanation of the system. If so, you can use the figure as a reference and refeer to it with Fig. 1. For example: "As shown in Fig. 1, the computational system consists of ..."
+* Good job with the flow diagrams. Here you did not get all the full marks because you are missing the description for all 3 diagrams. Remember, an image without description is an unbiguous tool. Add a paragram explaining what YOU see in the image and the reason why you included. 
+* You test plan, down at the bottom of this document is partially correct. Steps are good and logical, inputs and expected outputs are less clear and you checked your program, added MET, as a evidence, but the reader does not know the evidence for the MET. You could add another column to the table explaining the evidence for the MET result.
+```
 
 Development
 --------
@@ -66,7 +94,7 @@ The following script creates the app folder and inside it creates two more folde
 #This file creates the folder structure for the minimal Car Rental App
 
 echo "Starting the installation"
-echo "Installing the RentalCarApp in the desktop"
+echo "Installing the RentalCarApp in the desktop"Impro
 
 #Moving to the desktop
 cd ~/Desktop
@@ -514,6 +542,15 @@ Arata Katayama
 Descriptiion of the delete script. 
 These are just the script of the definition of each scripts. When the user wants to access them they need to type in `man \nameOfScript`. By doing this the user can see the man pages and familiarize themselves with what each script is about. Also for the developer, when creating man page, we should be careful if the name of the scripts are different. Because the script name and man page name are the same, it is better and safer if we created in a folder.
 
+## Criterion C
+|**level**|**Description**|
+|-----|------------|
+|5|The proposed solution is characterized by the appropriate use of existing tools. The techniques are adequate for the task and their use is explained. All sources are identified.|
+```.sh
+Rationale
+* Great job here Arata
+* You can get full mark next time by including refereces (MLA) to the resources you researched.
+```
 
 ### Checking all the scripts functionality
 | Scripts | Criteria | Check |
@@ -643,4 +680,12 @@ Since uninstall deletes every data the user typed in, it is very important to as
 ### Summary
 This program was developed by **dynamic testing**. Dynamic testing is a type of software testing, where we test the actual code by putting user input, to see if the output is the desired answer or not. In this program, we tested by putting user input while developing the program, to find any errors that occured, beforehand so that I wouldn't have to fix every errors at the last. Dynamic testing made the development of the program easier and more clear. Also **white-box testing** is another type of sofware testing style that I used. White-box testing is where the tester, usually the developer, tests the user input and output of the code, by checking the actual code that the developer developed. I knew what was going on with the code that I created, therefore this would be a white-box testing. 
 
+## Criterion D
+|**level**|**Description**|
+|-----|------------|
+|6|The product is fully evaluated against the success criteria identified in criterion A. Recommendations for further improvement of the product are realistic.|
+```.sh
+Rationale
+* This was a perfect criterion Arata! well done. The evaluation of the criteria is great, clear and to the point. Improvements are realistic and necessary.
+```
 
